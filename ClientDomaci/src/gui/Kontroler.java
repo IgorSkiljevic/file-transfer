@@ -51,7 +51,7 @@ public class Kontroler {
 			izlazniTokKaServeru = new PrintStream(soketZaKomunkaciju.getOutputStream());
 			ulazniTokOdServera = new BufferedReader(new InputStreamReader(soketZaKomunkaciju.getInputStream()));
 			tokOdServeraBajtovi = KonekcijaServer.getSoket().getInputStream();
-		
+
 		} catch (Exception e) {
 			otvoriServerskaGreska();
 			System.exit(0);
@@ -226,14 +226,17 @@ public class Kontroler {
 	}
 
 	public static void otvoriUploadFileGui() {
-		uploadFileGUI = new UploadFile();
-		uploadFileGUI.frmUploadFile.setVisible(true);
-
+		if (uploadFileGUI == null) {
+			uploadFileGUI = new UploadFile();
+			uploadFileGUI.frmUploadFile.setVisible(true);
+		}
 	}
 
 	public static void otvoriChangePassword() {
-		changePasswordGUI = new ChangePassword();
-		changePasswordGUI.frmChangepassword.setVisible(true);
+		if (changePasswordGUI == null) {
+			changePasswordGUI = new ChangePassword();
+			changePasswordGUI.frmChangepassword.setVisible(true);
+		}
 	}
 
 	public static void zatvoriChangePassword() {
